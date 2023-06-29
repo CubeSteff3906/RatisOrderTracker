@@ -7,6 +7,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts') //Standard connections to the libraries (a kind of @import if you want)
 
 const indexRouter = require('./routes/index') // References router to use
+const orderRouter = require('./routes/order-scan')
 
 app.set('view engine', 'ejs') //Standard ejs initialisation
 app.set('views', __dirname + '/views') //Views are used to generate dynamic HTML
@@ -22,5 +23,6 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
 app.use('/', indexRouter) //Uses router const indexRouter for root directory
+app.use('/order-scan', orderRouter)
 
 app.listen(process.env.PORT || 3000)

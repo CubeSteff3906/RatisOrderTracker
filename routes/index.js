@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router() //built-in middleware function used for creating sets of routes
 
+//Home Page
 router.get('/', (req, res) => { //GETs req from root (localhost:3000) and sends res back
   res.render('index')
 })
