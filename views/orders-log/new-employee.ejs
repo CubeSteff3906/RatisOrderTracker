@@ -1,0 +1,33 @@
+Page for registering new employees to the db
+
+<form method="POST" action="./new-employee">
+  
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" placeholder="Enter employee name">
+
+  <label for="position">Position:</label>
+  <input type="text" id="position" name="position" placeholder="Enter employee position">
+
+  <label for="password">Password:</label>
+  <input type="text" id="password" name="password" placeholder="Enter employee password (not mandatory)">
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<h1>All Employees</h1>
+<ul>
+  <% employees.forEach(function(employee) { %>
+    <li>
+      <%= employee.name %>
+      <form method="POST" action="./delete-employee">
+        <input type="hidden" name="name" value="<%= employee.name %>">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<script>
+
+</script>

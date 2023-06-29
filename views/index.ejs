@@ -1,1 +1,28 @@
-Middle
+This page will be the initial login page. <br>
+The barcode will contain a simple string called position (employee/verification/admin) <br>
+This information will be auto-completed by the scan <br>
+The employee's status will be used as a query to determine his level of access in the website
+
+<form method="GET" id="login-screen">
+  <input type="text" name="name" placeholder="Enter your name">
+  <button type="submit">Access</button>
+</form>
+
+<script>
+  document.getElementById("login-screen").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    const queryValue = document.querySelector('input[name="name"]').value;
+
+    if (queryValue === "employee" || queryValue === "verification") {
+      this.action = "/order-scan"
+    } else if (queryValue === "admin") {
+      this.action = "/orders-log"
+    } else {
+      this.action = "/"
+    }
+
+    this.submit();
+
+  })
+</script>
