@@ -3,8 +3,8 @@ The barcode will contain a simple string called position (employee/verification/
 This information will be auto-completed by the scan <br>
 The employee's status will be used as a query to determine his level of access in the website
 
-<form method="GET" id="login-screen">
-  <input type="text" name="name" placeholder="Enter your name">
+<form method="POST" action="/check-name">
+  <input type="text" name="name" placeholder="Enter a name">
   <button type="submit">Access</button>
 </form>
 
