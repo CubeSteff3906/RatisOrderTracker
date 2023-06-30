@@ -1,27 +1,26 @@
 const mongoose = require('mongoose')
 
 const ordersSchema = new mongoose.Schema({
-  Nr_Comanda: {
-    type: Number,
+  id: {
+    type: String,
     required: true
   },
-  Cantitate: {
+  cantitate: {
     type: Number,
     required: true,
     default: 0
   },
-  Data_Intrare: {
+  data_initiere: {
     type: Date,
     required: true
   },
-  Data_iesire: {
+  data_finalizare: {
     type: Date,
     required: false
   },
-  Stadiu: {
+  status: {
     type: String,
-    required: true,
-    default: "In productie"
+    required: true
   }
 
 })

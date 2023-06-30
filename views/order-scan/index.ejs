@@ -1,40 +1,18 @@
-This is the webpage that will receive requests for the three scan steps <br>
-GET request will manipulate URLs based off order-status in database (for order-status='NULL', GET /new, etc.) <br>
-Query will be product-id and order-status most likely. It's all we need to fetch the proper link
+<br> <br> <br>
+
+SCANATI CODUL DE BARE COMANDA 😡
 
 <br> <br> <br>
 
-SCAN FILE BARCODE <br>
-File barcode will contain a simple order-id. <br>
-We look for the order-id.status in the db. If we don't have any, we go to /new and create a new db entry. <br>
-If we do, we look at its status and redirect to the appropriate route
-
-<br> <br>
-
-The rest is simple MongoDB architecture and logic. Or it should be.
+Codul de bare va fi format din +6 cifre, unic pentru fiecare comanda<br>
+Cautam proprietatea status a comenzii in Mongo. Daca e NULL, dam redirect la /new si confirmam preluarea unei comenzi noi. <br>
+Daca nu e NULL, dam query la status si in functie de asta deschidem /finish sau /verification
 
 <br> <br> <br>
 
-<form method="GET" id="order-selector">
-  <input type="text" name="order-id" placeholder="Enter order ID">
+<form method="POST" action="/order-scan/check-order?id=<%= id %>">
+  <input type="text" name="id" placeholder="Scanati / introduceti manual nr comanda">
   <button type="submit">Scan</button>
 </form>
-
-<script>
-  document.getElementById("order-selector").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the form from submitting
-
-    const queryValue = document.querySelector('input[name="order-id"]').value;
-
-    if (queryValue === "zero") {
-      this.action = "../order-scan"
-    } else {
-      this.action = "../order-scan/new"
-    }
-
-    this.submit();
-
-  })
-</script>
 
 <br> <br> <br> <br>

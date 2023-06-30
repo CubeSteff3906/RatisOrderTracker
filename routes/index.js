@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router() //built-in middleware function used for creating sets of routes
 
 
-const Employee = require('../models/employees')
+const Employees = require('../models/employees')
 
     // Route handlers
     //Home Page
@@ -12,16 +12,17 @@ const Employee = require('../models/employees')
 
     // Technical POST page for querying the Employees database on the server-side
     router.post('/check-name', async (req, res) => {
-      const name = req.body.name; // Get the submitted name from the request body
+      const id = req.body.id; // Get the submitted id from the request body
 
       try {
-        const result = await Employee.findOne({ name: name })
+        const angajat = await Employees.findOne({ id: id })
 
-        if (result) {
-          const position = result.position;
+        if (angajat) {
+          const position = angajat.position;
+          const id = angajat.id;
 
           if (position === "employee" || position === "verification") {
-            res.redirect('/order-scan')
+            res.redirect('/order-scan?id=${id}')
           } else if (position === "admin") {
             res.redirect('/orders-log')
           } else {

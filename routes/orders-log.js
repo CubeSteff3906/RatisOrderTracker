@@ -18,17 +18,19 @@ router.get('/new-employee', (req, res) => {
 })
 
 router.post('/new-employee', (req, res) => {
-  const { name, position, password } = req.body
+  const { id, name, position, password } = req.body
 
   let newEmployee
 
   if (password.length === 0) {
     newEmployee = new Employee ({
+      id: id,
       name: name,
       position: position
     })
   } else {
     newEmployee = new Employee({
+      id: id,
       name: name,
       position: position,
       password: password

@@ -3,26 +3,7 @@ The barcode will contain a simple string called position (employee/verification/
 This information will be auto-completed by the scan <br>
 The employee's status will be used as a query to determine his level of access in the website
 
-<form method="POST" action="/check-name">
-  <input type="text" name="name" placeholder="Enter a name">
+<form method="POST"  action="/check-name">
+  <input type="text" name="id" placeholder="Enter an id">
   <button type="submit">Access</button>
 </form>
-
-<script>
-  document.getElementById("login-screen").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting
-
-    const queryValue = document.querySelector('input[name="name"]').value;
-
-    if (queryValue === "employee" || queryValue === "verification") {
-      this.action = "/order-scan"
-    } else if (queryValue === "admin") {
-      this.action = "/orders-log"
-    } else {
-      this.action = "/"
-    }
-
-    this.submit();
-
-  })
-</script>

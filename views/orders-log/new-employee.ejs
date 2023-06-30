@@ -2,6 +2,9 @@ Page for registering new employees to the db
 
 <form method="POST" action="./new-employee">
   
+  <label for="id">Id:</label>
+  <input type="text" id="id" name="id" placeholder="Enter employee id">
+
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" placeholder="Enter employee name">
 
@@ -14,12 +17,14 @@ Page for registering new employees to the db
   <button type="submit">Submit</button>
 
 </form>
-
+ 
 <h1>All Employees</h1>
 <ul>
   <% employees.forEach(function(employee) { %>
     <li>
-      <%= employee.name %>
+      <%= employee.id %>
+      <%= employee.name %> <br>
+      <%= employee.position %>
       <form method="POST" action="./delete-employee">
         <input type="hidden" name="name" value="<%= employee.name %>">
         <button type="submit">Delete</button>
